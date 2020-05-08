@@ -9,7 +9,7 @@ def index():
     return "Hello"
 
 @bp.route("/<string:fname>/<string:contents>")
-def makefile(fname, content):
-    fpath = os.path.join(os.path.abspath(__file__), fname)
-    make_file.delay(fpath, content)
+def makefile(fname, contents):
+    fpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), fname)
+    make_file.delay(fpath, contents)
     return f"find your file @ <code>{fpath}</code>"
